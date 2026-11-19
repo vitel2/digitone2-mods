@@ -1,0 +1,62 @@
+{
+ "id": "midi-lfo3",
+ "version": "1.0",
+ "title": "MIDI LFO3",
+ "category": "Sequencer",
+ "author": "Vijay",
+ "license": "GPL-2.0-or-later",
+ "description": "Adds a third LFO to MIDI tracks. It has its own page, LFO (3/3), after LFO1 and LFO2, with the same controls (SPD, MULT, FADE, DEST, WAVE, SPH, MODE, DEP). Its DEST can be any MIDI-track destination, CCs included, and it is saved with the project like the other two.",
+ "device": "digitone-mk2",
+ "os": "1.12",
+ "sources": [
+  "mlfo3.s"
+ ],
+ "sites": [
+  {
+   "addr": "0x40061868",
+   "stock": "7202",
+   "op": "bytes",
+   "kind": "code",
+   "new": "7203"
+  },
+  {
+   "addr": "0x40061872",
+   "stock": "203c401e0410",
+   "op": "bytes",
+   "kind": "code",
+   "new": "203c00000000",
+   "relocs": [
+    [
+     2,
+     "abs32",
+     "sym:ml3_ids",
+     0
+    ]
+   ]
+  },
+  {
+   "addr": "0x400c25e4",
+   "stock": "722c4c010800",
+   "op": "jmp",
+   "target": "ml3_lookup"
+  },
+  {
+   "addr": "0x40039d86",
+   "stock": "2f024e93588f080000116752",
+   "op": "jmp",
+   "target": "ml3_valid"
+  },
+  {
+   "addr": "0x40039f00",
+   "stock": "303c0e000802001166024280",
+   "op": "jmp",
+   "target": "ml3_step"
+  }
+ ],
+ "resources": {
+  "core": "0.1"
+ },
+ "requires": [
+  "core"
+ ]
+}

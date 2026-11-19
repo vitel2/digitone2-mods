@@ -1,0 +1,111 @@
+{
+ "id": "blocks",
+ "version": "1.0",
+ "title": "BLOCKS",
+ "category": "Sequencer",
+ "author": "Vijay",
+ "license": "GPL-2.0-or-later",
+ "description": "Linear-groove blocking for breakbeats. TRACK LAYERING (FUNC+3, SETUP) gets a third page, BLOCKS, after the triggering and CHOKES pages. When track A blocks track B and A plays a sequencer trig, B's sequencer trig on the same step is dropped, so only A sounds there. Any track can block any other, lower- or higher-numbered. Blocks are saved with the pattern's kit.",
+ "device": "digitone-mk2",
+ "os": "1.12",
+ "sources": [
+  "blocks.s"
+ ],
+ "sites": [
+  {
+   "addr": "0x40027bca",
+   "stock": "6000e954",
+   "op": "bytes",
+   "kind": "code",
+   "new": "6000e964"
+  },
+  {
+   "addr": "0x4002651e",
+   "stock": "42822f084eb9400db8fc588f4a8067027401",
+   "op": "jsr",
+   "target": "blk_gate"
+  },
+  {
+   "addr": "0x400dd34e",
+   "stock": "4fefffe048d77c1c",
+   "op": "jmp",
+   "target": "blk_sdes"
+  },
+  {
+   "addr": "0x400ddf52",
+   "stock": "486a281847eb5d20",
+   "op": "jmp",
+   "target": "blk_kload"
+  },
+  {
+   "addr": "0x400de0bc",
+   "stock": "2f02486b5d20",
+   "op": "jmp",
+   "target": "blk_ksave"
+  },
+  {
+   "addr": "0x4010fcfe",
+   "stock": "42aa01747002",
+   "op": "jmp",
+   "target": "blk_vinit"
+  },
+  {
+   "addr": "0x401105b0",
+   "stock": "254101742f0a",
+   "op": "jmp",
+   "target": "blk_vpage"
+  },
+  {
+   "addr": "0x4010ff62",
+   "stock": "66000120",
+   "op": "bytes",
+   "kind": "code",
+   "new": "4e714e71"
+  },
+  {
+   "addr": "0x4010ff92",
+   "stock": "48794021fdcf",
+   "op": "bytes",
+   "kind": "code",
+   "new": "487900000000",
+   "relocs": [
+    [
+     2,
+     "abs32",
+     "sym:blk_title",
+     0
+    ]
+   ]
+  },
+  {
+   "addr": "0x401102a8",
+   "stock": "7201b2806638",
+   "op": "jmp",
+   "target": "blk_vtoggle"
+  },
+  {
+   "addr": "0x401103a2",
+   "stock": "7201b28066e2",
+   "op": "jmp",
+   "target": "blk_vglyph"
+  },
+  {
+   "addr": "0x40031758",
+   "stock": "2f0a246f0008",
+   "op": "jmp",
+   "target": "blk_bget"
+  },
+  {
+   "addr": "0x400316b8",
+   "stock": "4fefffec48d70c1c",
+   "op": "jmp",
+   "target": "blk_bset"
+  }
+ ],
+ "resources": {
+  "core": "0.1"
+ },
+ "requires": [
+  "core"
+ ]
+}

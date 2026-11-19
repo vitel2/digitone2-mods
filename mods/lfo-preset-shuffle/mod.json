@@ -1,0 +1,127 @@
+{
+ "id": "lfo-preset-shuffle",
+ "version": "1.0",
+ "title": "LFO preset shuffle (POOL)",
+ "category": "Sequencer",
+ "author": "Vijay",
+ "license": "GPL-2.0-or-later",
+ "description": "Adds a destination, PRST > Preset Pool (POOL), to synth-track LFO1-3. Point an LFO at POOL with DEP above 0 and each sequencer trig without a manual preset lock plays a preset-pool slot picked from the LFO's wave (SPD, MULT, WAVE, SPH; the phase moves per step). DEP sets how many of the filled pool slots are used: at full depth, all of them. The middle of the wave's swing plays the track's own sound. Negative DEP mirrors the order. MIDI tracks are not affected.",
+ "device": "digitone-mk2",
+ "os": "1.12",
+ "sources": [
+  "shuffle.s"
+ ],
+ "sites": [
+  {
+   "addr": "0x400d87b8",
+   "stock": "4fefffcc48d77cfc",
+   "op": "jmp",
+   "target": "shf_bentry"
+  },
+  {
+   "addr": "0x401f87a0",
+   "stock": "ffffffff",
+   "op": "bytes",
+   "kind": "data",
+   "new": "0000000c"
+  },
+  {
+   "addr": "0x401f87a4",
+   "stock": "ffffffff",
+   "op": "bytes",
+   "kind": "data",
+   "new": "00000041"
+  },
+  {
+   "addr": "0x401f87a8",
+   "stock": "00003f00",
+   "op": "bytes",
+   "kind": "data",
+   "new": "00000000"
+  },
+  {
+   "addr": "0x401f87b0",
+   "stock": "00003f00",
+   "op": "bytes",
+   "kind": "data",
+   "new": "00000000"
+  },
+  {
+   "addr": "0x401f87b8",
+   "stock": "0040ffff",
+   "op": "bytes",
+   "kind": "data",
+   "new": "ffffffff"
+  },
+  {
+   "addr": "0x401f87c4",
+   "stock": "00000000",
+   "op": "bytes",
+   "kind": "data",
+   "new": "00001e00"
+  },
+  {
+   "addr": "0x401f87c8",
+   "stock": "402151f0",
+   "op": "bytes",
+   "kind": "data",
+   "new": "00000000",
+   "relocs": [
+    [
+     0,
+     "abs32",
+     "sym:shf_longname",
+     0
+    ]
+   ]
+  },
+  {
+   "addr": "0x401f87d0",
+   "stock": "40211156",
+   "op": "bytes",
+   "kind": "data",
+   "new": "00000000",
+   "relocs": [
+    [
+     0,
+     "abs32",
+     "sym:shf_poolname",
+     0
+    ]
+   ]
+  },
+  {
+   "addr": "0x401f7b20",
+   "stock": "4021ba46",
+   "op": "bytes",
+   "kind": "data",
+   "new": "00000000",
+   "relocs": [
+    [
+     0,
+     "abs32",
+     "sym:shf_prstname",
+     0
+    ]
+   ]
+  },
+  {
+   "addr": "0x400dc18e",
+   "stock": "2f027264206f0008",
+   "op": "jmp",
+   "target": "shf_pslot"
+  },
+  {
+   "addr": "0x400d8c16",
+   "stock": "223c0000048b4c014800206f004041f048342748003c6018",
+   "op": "jmp",
+   "target": "shf_bsound"
+  }
+ ],
+ "resources": {
+  "core": "0.1"
+ },
+ "requires": [
+  "core"
+ ]
+}

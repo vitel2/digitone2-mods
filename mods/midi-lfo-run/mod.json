@@ -1,0 +1,34 @@
+{
+ "id": "midi-lfo-run",
+ "version": "1.0",
+ "title": "MIDI LFO run",
+ "category": "Sequencer",
+ "author": "Vijay",
+ "license": "GPL-2.0-or-later",
+ "description": "Fixes a stock OS 1.12 bug: after you create a new project, MIDI-track LFOs freeze until a note trig plays on the track. With this mod, MIDI-track LFOs in FRE and TRG mode run without any trig. Their CCs are sent while the transport is playing or paused and stop when it is stopped (stock sends them while stopped too). ONE, HALF and HOLD are unchanged.",
+ "device": "digitone-mk2",
+ "os": "1.12",
+ "sources": [
+  "lfo.s"
+ ],
+ "sites": [
+  {
+   "addr": "0x40137770",
+   "stock": "7f2c002e772c002a",
+   "op": "jsr",
+   "target": "mlr_lane"
+  },
+  {
+   "addr": "0x4012a340",
+   "stock": "222f00080681ffffffe7",
+   "op": "jmp",
+   "target": "mlr_gate"
+  }
+ ],
+ "resources": {
+  "core": "0.1"
+ },
+ "requires": [
+  "core"
+ ]
+}
